@@ -628,9 +628,9 @@ Skylink.prototype._handleSDPConnectionSettings = function (targetMid, sessionDes
         i--;
       } else if (mediaType && ['audio', 'video'].indexOf(mediaType) > -1 &&
         ['a=sendrecv', 'a=sendonly', 'a=recvonly'].indexOf(sdpLines[i]) > -1) {
-        if (self._hasMCU) {
-          sdpLines[i] = targetMid === 'MCU' ? 'a=sendonly' : 'a=recvonly';
-        }
+        // if (self._hasMCU) {
+        //   sdpLines[i] = targetMid === 'MCU' ? 'a=sendonly' : 'a=recvonly';
+        // }
 
         if (self._sdpSettings.direction[mediaType].send && !self._sdpSettings.direction[mediaType].receive) {
           sdpLines[i] = sdpLines[i].indexOf('send') > -1 ? 'a=sendonly' : 'a=inactive';
