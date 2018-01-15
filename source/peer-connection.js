@@ -1866,20 +1866,19 @@ Skylink.prototype._createPeerConnection = function(targetMid, isScreenSharing, c
     var stream = evt.stream || evt;
 
     // MCU test
-    function makeFackUserId() {
-      var text = "user_";
-      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    // function makeFackUserId() {
+    //   var text = "user_";
+    //   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-      for (var i = 0; i < 20; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    //   for (var i = 0; i < 20; i++)
+    //     text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-      return text;
-    }
-    self.peerStreamTable[stream.id] = makeFackUserId();
-
+    //   return text;
+    // }
+    // self.peerStreamTable[stream.id] = makeFackUserId();
     var video = document.createElement('video');
     video.id = stream.id;
-    video.peerIdB = self.peerStreamTable[stream.id];
+    video.peerId = self.streamIdPeerIdMap[stream.id];
     window.document.body.append(video);
     self.videoRenderers[stream.id] = attachMediaStream(video, stream);
     // End of MCU test

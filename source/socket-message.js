@@ -1652,9 +1652,7 @@ Skylink.prototype._answerHandler = function(message) {
   var targetMid = message.mid; // should really be sourceMid...
 
   if (targetMid === 'MCU') {
-    // var peerStreamTable = message.peerStreamTable;
-    // self.peerStreamTable = peerStreamTable;
-    self.peerStreamTable = self.peerStreamTable || {};
+    self.streamIdPeerIdMap = message.streamIdPeerIdMap || {};
   }
 
   log.log([targetMid, null, message.type,
