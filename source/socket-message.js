@@ -1649,7 +1649,13 @@ Skylink.prototype._candidateHandler = function(message) {
  */
 Skylink.prototype._answerHandler = function(message) {
   var self = this;
-  var targetMid = message.mid;
+  var targetMid = message.mid; // should really be sourceMid...
+
+  if (targetMid === 'MCU') {
+    // var peerStreamTable = message.peerStreamTable;
+    // self.peerStreamTable = peerStreamTable;
+    self.peerStreamTable = self.peerStreamTable || {};
+  }
 
   log.log([targetMid, null, message.type,
     'Received answer from peer. Session description:'], clone(message));
