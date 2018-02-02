@@ -1877,6 +1877,7 @@ Skylink.prototype._createPeerConnection = function(targetMid, isScreenSharing, c
     // }
     // self.peerStreamTable[stream.id] = makeFackUserId();
     var video = document.createElement('video');
+    video.autoplay = true;
     video.id = stream.id;
     video.peerId = self.streamIdPeerIdMap[stream.id];
     window.document.body.append(video);
@@ -1912,7 +1913,7 @@ Skylink.prototype._createPeerConnection = function(targetMid, isScreenSharing, c
     self._onRemoteStreamAdded(targetMid, stream, !!pc.hasScreen);
   };
 
-  pc.onremovestream = function(event) {
+  pc.onremovestream = function(evt) {
     var stream = evt.stream || evt;
     var renderer = self.videoRenderers[stream.id];
     document.body.removeChild(renderer);
